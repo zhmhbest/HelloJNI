@@ -1,12 +1,10 @@
-SOURCE_PATH="src/java"
-OUTPUT_PATH="src/native"
-CLASS_NAME="HelloJNI"
+source ./config.sh
 
-if [ ! -f "$OUTPUT_PATH/$CLASS_NAME.h" ]; then
+if [ ! -f "$NATIVE_SOURCE/$CLASS_NAME.h" ]; then
     echo "make $CLASS_NAME.h"
-    javah -d $OUTPUT_PATH -classpath $SOURCE_PATH -jni -encoding "UTF-8" $CLASS_NAME
+    javah -d $NATIVE_SOURCE -classpath $JAVA_SOURCE -jni -encoding "UTF-8" $CLASS_NAME
 fi
-if [ ! -f "$OUTPUT_PATH/$CLASS_NAME.c" ]; then
+if [ ! -f "$NATIVE_SOURCE/$CLASS_NAME.c" ]; then
     echo "make $CLASS_NAME.c"
-    echo "#include \"$CLASS_NAME.h\"">"$OUTPUT_PATH/$CLASS_NAME.c"
+    echo "#include \"$CLASS_NAME.h\"">"$NATIVE_SOURCE/$CLASS_NAME.c"
 fi
