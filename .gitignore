@@ -1,0 +1,5 @@
+/out/
+/.idea/
+/*.iml
+/.vscode/
+/src/native/build/
